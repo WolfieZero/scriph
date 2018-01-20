@@ -1,0 +1,44 @@
+{
+  "name": "scriph",
+  "description": "A simple markdown editor.",
+  "version": "0.1.0",
+  "author": "Neul Sweeney <neil@wolfiezero.com>",
+  "main": "public/main.js",
+  "private": true,
+  "dependencies": {
+    "@skidding/react-codemirror": "^1.0.2",
+    "electron-is-dev": "^0.3.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-markdown": "^3.1.0",
+    "react-scripts": "1.0.17",
+    "react-split-pane": "^0.1.71"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "yarn electron:dev",
+    "preelectron:build": "yarn build",
+    "electron:build": "build --em.main=build/main.js",
+    "electron:start": "electron .",
+    "electron:dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn electron:start\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.48.3",
+    "wait-on": "^2.0.2"
+  },
+  "build": {
+    "appId": "com.wolfiezero.scriph",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
